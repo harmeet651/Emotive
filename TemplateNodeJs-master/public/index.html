@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Template App</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale = 1.0, 
+          maximum-scale=1.0, user-scalable=no" />
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC00xSk8OLLyPTwJPMCTxjtOCOYrX-dW6A&libraries=places"></script>
+</head>
+<body>
+  <form method="POST" action="/">
+    <input type="text" name="user[name]">
+    <input type="text" name="user[email]">
+    <input type="submit" value="Submit" id="button">
+</form>
+  <div id="firstDiv"></div>
+<script type="text/javascript">
+$("#button").click(function(){
+          myFunction();
+        });
+
+function myFunction() {
+       $.ajax(
+              {
+                url: "/allData?",
+                type: "GET",
+
+                success: function(data)
+                {
+                    var allData = data;
+                    console.log('success mainTable called');
+                    console.log(allData);
+                    if(allData.cod=="404")
+                      { 
+                        console.log("404 error");
+                        html_text="";
+                        html_text+="<div class=\"table-responsive\">";
+                        html_text+="<div class=\"container-fluid\">";
+                        html_text+="<table class=\"text-center\" id=\"noRecordTable\" align=\"center\"><tr><td><h2>NO RECORDS HAVE BEEN FOUND</h2></td></tr>";
+                        html_text+="</table>"
+                        html_text+="</div>";
+                         document.getElementById("firstDiv").innerHTML=html_text;
+                      }
+                       else
+                       { 
+                        html_text="";
+                        html_text+="<div><p>SUCCESS</p></div>"; 
+                        document.getElementById("firstDiv").innerHTML=html_text;
+                       }
+                }
+              })
+     }
+</script>
+</body>
+</html>
