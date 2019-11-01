@@ -1,23 +1,55 @@
-// Download the helper library from https://www.twilio.com/docs/node/install
-// Your Account Sid and Auth Token from twilio.com/console
-// DANGER! This is insecure. See http://twil.io/secure
 const accountSid = 'AC52a6b08c1d1962ba404b7382c243dedc';
 const authToken = '148be1088c0d43bac266478594d90910';
-const client = require('twilio')(accountSid, authToken);
-
-client.messages
-  .create({
-     body: 'Hello Pajji',
-     from: '+12098035828',
-     to: '+12132756590'
-   })
-  .then(message => console.log(message.sid));
-
 const http = require('http');
 const express = require('express');
+const app = express();
+var fs = require('fs');
+var url = require('url');
+var queryString = require('querystring');
+const client = require('twilio')(accountSid, authToken);
+
+http.createServer(function(req, res)
+{
+    console.log("sms");
+    if(req.url==="/sms")
+    {
+		res.writeHead(200, {"Content-Type" : "text/html"});
+		fs.createReadStream("./public/sms.html", "UTF-8").pipe(res);
+    }
+    if(req.method === "POST")
+    {
+		var data = "";
+        req.on("data", function(chunk)
+        {
+			data += chunk; 
+		});
+		var formData;
+        req.on("end", function(chunk)
+        {
+			formData = queryString.parse(data);
+		
+        var text = Object.values(formData);
+        console.log(text[0]);
+        console.log(text[1]);
+        client.messages
+        .create(
+            {
+            body: text[1],
+            from: '+12098035828',
+            to: text[0]
+            })
+        .then(message => console.log(message.sid));
+        });
+        }
+    
+}).listen(3000);
+
+  //message sent
+  
+  //receive message
+
 const MessagingResponse = require('twilio').twiml.MessagingResponse;
 
-const app = express();
 
 app.post('/sms', (req, res) => {
   const twiml = new MessagingResponse();
@@ -26,8 +58,4 @@ app.post('/sms', (req, res) => {
 
   res.writeHead(200, {'Content-Type': 'text/xml'});
   res.end(twiml.toString());
-});
-
-http.createServer(app).listen(1337, () => {
-  console.log('Express server listening on port 1337');
 });

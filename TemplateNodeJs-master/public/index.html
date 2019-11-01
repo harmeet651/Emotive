@@ -11,18 +11,23 @@
   <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC00xSk8OLLyPTwJPMCTxjtOCOYrX-dW6A&libraries=places"></script>
 </head>
 <body>
-  <h4><a>Keyword</a>&nbsp;<a>Message</a>&nbsp;<a>Bulk Message</a></h4>
+  <h4><a>Keyword</a>&nbsp;<a href="../sms">Message</a>&nbsp;<a>Bulk Message</a></h4>
   <h1>KEYWORD</h1>
-  <form method="POST" action="/">
+  <form method="POST" action="/index">
     Keyword Text
     <input type="text" name="trigger">
     <br>
     Opt-in Auto Response
     <input type="text" name="message">
-    <input type="submit" value="Submit" id="button">
+    <input type="submit" value="Submit" id="button" onclick="added()">
 </form>
-  <div id="firstDiv"></div>
 <script type="text/javascript">
+  function added(){
+  alert("Added");
+  }
+</script>
+  <div id="firstDiv"></div>
+<!-- <script type="text/javascript">
 $("#button").click(function(){
           myFunction();
         });
@@ -58,6 +63,6 @@ function myFunction() {
                 }
               })
      }
-</script>
+</script> -->
 </body>
 </html>
