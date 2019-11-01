@@ -1,0 +1,7 @@
+1. Rates: sending messages in US is eay as rate limit is less here with TWILIO
+
+2. Valid phone numbers: Check if numbers are valid to save time and cost
+
+3. Automated response handling: use TwiMil to increase business by sending customized messages
+
+4. Industry compliance: Check is users want to OPT OUT by looking for STOP messages
