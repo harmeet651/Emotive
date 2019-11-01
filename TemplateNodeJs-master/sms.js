@@ -1,5 +1,5 @@
-const accountSid = 'AC52a6b08c1d1962ba404b7382c243dedc';
-const authToken = '148be1088c0d43bac266478594d90910';
+const accountSid = 'your key';
+const authToken = 'your token';
 const http = require('http');
 const express = require('express');
 const app = express();
