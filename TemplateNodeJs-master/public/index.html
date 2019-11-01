@@ -11,9 +11,14 @@
   <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC00xSk8OLLyPTwJPMCTxjtOCOYrX-dW6A&libraries=places"></script>
 </head>
 <body>
+  <h4><a>Keyword</a>&nbsp;<a>Message</a>&nbsp;<a>Bulk Message</a></h4>
+  <h1>KEYWORD</h1>
   <form method="POST" action="/">
-    <input type="text" name="user[name]">
-    <input type="text" name="user[email]">
+    Keyword Text
+    <input type="text" name="trigger">
+    <br>
+    Opt-in Auto Response
+    <input type="text" name="message">
     <input type="submit" value="Submit" id="button">
 </form>
   <div id="firstDiv"></div>
@@ -48,7 +53,7 @@ function myFunction() {
                        { 
                         html_text="";
                         html_text+="<div><p>SUCCESS</p></div>"; 
-                        document.getElementById("firstDiv").innerHTML=html_text;
+                        document.getElementById("firstDiv").innerHTML="Keyword Added";
                        }
                 }
               })
