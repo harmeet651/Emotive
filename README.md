@@ -24,5 +24,7 @@ npm install twilio
 unzip ngrok and run it as admin, and add the url to the twilio account to recieve messages
 
 start using these commands in command promt
-node app.js //for making new words and saving in POstGres
+node app.js //for making new words and saving in PostGreSQL
 node sms.js //to send and recieve messages
+
+use vhost in code to run just one script
