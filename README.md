@@ -21,10 +21,23 @@ npm install request
 npm install twilio
 
 //STEP TWO
+install PostgreSQL
+make a new table Emotive, add 3 columns to it 
+1. id datatype - integer, primary key
+2. text datatype - text
+3. message datatype - text
+add your connection string to your code
+
+//STEP THREE
 unzip ngrok and run it as admin, and add the url to the twilio account to recieve messages
 
+//Start
 start using these commands in command promt
 node app.js //for making new words and saving in PostGreSQL
 node sms.js //to send and recieve messages
 
 use vhost in code to run just one script
+can be used to send bulk messages too
+
+Thanks
+Harmeet Singh
